@@ -59,5 +59,3 @@ ds.mediate <- function(model.m=NULL, model.y=NULL, treat = NULL, mediator = NULL
   return(study.summary)
 
 }  
-  
-  

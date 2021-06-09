@@ -21,7 +21,7 @@
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @export
 #'
-ds.neModel <- function(formula=NULL, family=NULL, expData=NULL, se="bootstrap", nBoot=1000, datasources=NULL){
+ds.neModel <- function(formula=NULL, family=NULL, expData=NULL, se="bootstrap", nBoot=1000, newobj=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
@@ -55,11 +55,15 @@ ds.neModel <- function(formula=NULL, family=NULL, expData=NULL, se="bootstrap", 
     stop(" Argument 'se' must be either 'bootstrap' or 'robust'!", call.=FALSE)
   }
   
-  calltext <- call('neModelDS', formula, family, expData, se, nBoot)
+  if(is.null(newobj)){
+    newobj <- 'neModel.out'
+  }
+  
+  calltext <- call('neModelDS', formula, family, expData, se, nBoot, newobj)
   out <- DSI::datashield.aggregate(datasources, calltext)
   
   return(out)
   
-}  
+}   
   
   
