@@ -12,6 +12,7 @@ ds.multimed(
   covariates = NULL,
   data = NULL,
   sims = 1000,
+  conf.level = 0.95,
   datasources = NULL
 )
 }
@@ -35,6 +36,8 @@ above variables.}
 
 \item{sims}{a number of bootstrap samples used for the calculation of 
 confidence intervals.}
+
+\item{conf.level}{level to be used for confidence intervals.}
 
 \item{datasources}{a list of \code{\link{DSConnection-class}} 
 objects obtained after login. If the \code{datasources} argument is not specified

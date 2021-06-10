@@ -14,6 +14,8 @@
 #' @param se character string indicating the type of standard errors to be calculated.
 #' The default type is based on the bootstrap.
 #' @param nBoot number of bootstrap replicates.
+#' @param newobj a character string that provides the name for the output object
+#' that is stored on the data servers. Default \code{neModel.out}.
 #' @param datasources a list of \code{\link{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
 #' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
@@ -25,7 +27,7 @@ ds.neModel <- function(formula=NULL, family=NULL, expData=NULL, se="bootstrap", 
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- datashield.connections_find()
+    datasources <- DSI::datashield.connections_find()
   }
   
   # ensure datasources is a list of DSConnection-class

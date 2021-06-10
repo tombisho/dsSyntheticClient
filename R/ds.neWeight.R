@@ -19,7 +19,7 @@ ds.neWeight <- function(object=NULL, newobj=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- datashield.connections_find()
+    datasources <- DSI::datashield.connections_find()
   }
   
   # ensure datasources is a list of DSConnection-class

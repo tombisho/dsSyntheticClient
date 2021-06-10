@@ -10,6 +10,7 @@ ds.mediate(
   treat = NULL,
   mediator = NULL,
   boot = FALSE,
+  conf.level = 0.95,
   robustSE = FALSE,
   sims = 1000,
   seed = NULL,
@@ -30,6 +31,9 @@ used in the models.}
 
 \item{boot}{a logical value. if 'FALSE' a quasi-Bayesian approximation is used for
 confidence intervals; if 'TRUE' nonparametric bootstrap will be used. Default is 'FALSE'.}
+
+\item{conf.level}{the level of the returned two-sided confidence intervals. Default
+is to return the 2.5 and 97.5 percentiles of the simulated quantities.}
 
 \item{robustSE}{a logical value. If 'TRUE', heteroskedasticity-consistent standard
 errors will be used in quasi-Bayesian simulations. Ignored if 'boot' is 'TRUE' or

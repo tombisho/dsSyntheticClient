@@ -42,11 +42,11 @@
 #'
 ds.regmedint <- function(data = NULL, yvar=NULL, avar=NULL, mvar=NULL, cvar=NULL, eventvar=NULL,
                          a0 = 0, a1 = 1, m_cde = 1, c_cond = 0.5, mreg = "logistic", yreg = "survAFT_weibull", 
-                         interaction = TRUE, casecontrol = FALSE, na.omit = FALSE, datasources = NULL){
+                         interaction = TRUE, casecontrol = FALSE, na_omit = FALSE, datasources = NULL){
 
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- datashield.connections_find()
+    datasources <- DSI::datashield.connections_find()
   }
   
   # ensure datasources is a list of DSConnection-class
@@ -73,7 +73,7 @@ ds.regmedint <- function(data = NULL, yvar=NULL, avar=NULL, mvar=NULL, cvar=NULL
   eventvar.name <- eventvar
   
   calltext <- call('regmedintDS', data.name, yvar.name, avar.name, mvar.name, cvar.name, eventvar.name, 
-                   interaction=interaction, casecontrol=casecontrol, na.omit=na.omit)
+                   interaction=interaction, casecontrol=casecontrol, na_omit=na_omit)
   study.summary <- DSI::datashield.aggregate(datasources, calltext)
   
   return(study.summary)
