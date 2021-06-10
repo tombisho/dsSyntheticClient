@@ -14,6 +14,8 @@
 #' used in the models.
 #' @param boot a logical value. if 'FALSE' a quasi-Bayesian approximation is used for
 #' confidence intervals; if 'TRUE' nonparametric bootstrap will be used. Default is 'FALSE'.
+#' @param conf.level the level of the returned two-sided confidence intervals. Default
+#' is to return the 2.5 and 97.5 percentiles of the simulated quantities.
 #' @param robustSE a logical value. If 'TRUE', heteroskedasticity-consistent standard
 #' errors will be used in quasi-Bayesian simulations. Ignored if 'boot' is 'TRUE' or
 #' neither 'model.m' nor 'model.y' has a method for vcovHC in the sandwich package. 
@@ -29,11 +31,11 @@
 #' @export
 #'
 ds.mediate <- function(model.m=NULL, model.y=NULL, treat = NULL, mediator = NULL, boot=FALSE,
-                       robustSE=FALSE, sims=1000, seed=NULL, datasources=NULL){
+                       conf.level=0.95, robustSE=FALSE, sims=1000, seed=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- datashield.connections_find()
+    datasources <- DSI::datashield.connections_find()
   }
   
   # ensure datasources is a list of DSConnection-class
@@ -52,7 +54,8 @@ ds.mediate <- function(model.m=NULL, model.y=NULL, treat = NULL, mediator = NULL
   treat.name <- treat
   med.name <- mediator
 
-  calltext <- call('mediateDS', model.m, model.y, treat.name, med.name, boot=boot, robustSE=robustSE, sims=sims,
+  calltext <- call('mediateDS', model.m, model.y, treat.name, med.name, boot=boot, 
+                   conf.level=conf.level, robustSE=robustSE, sims=sims,
                    seed=seed)
   study.summary <- DSI::datashield.aggregate(datasources, calltext)
   

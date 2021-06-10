@@ -19,7 +19,7 @@ ds.regmedint(
   yreg = "survAFT_weibull",
   interaction = TRUE,
   casecontrol = FALSE,
-  na.omit = FALSE,
+  na_omit = FALSE,
   datasources = NULL
 )
 }
@@ -65,12 +65,12 @@ mediator-treatment interaction term in the outcome regression model.}
 \item{casecontrol}{a logical vector of length 1. Default to FALSE. Whether data comes from
 a case-control study.}
 
+\item{na_omit}{a logical vector of length 1. Default to FALSE. Whether to use na.omit() function
+in stats package to remove NAs in columns of interest before fitting the models.}
+
 \item{datasources}{a list of \code{\link{DSConnection-class}} 
 objects obtained after login. If the \code{datasources} argument is not specified
 the default set of connections will be used: see \code{\link{datashield.connections_default}}.}
-
-\item{na_omit}{a logical vector of length 1. Default to FALSE. Whether to use na.omit() function
-in stats package to remove NAs in columns of interest before fitting the models.}
 }
 \value{
 a summary table of the object of class 'multimed'.

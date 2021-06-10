@@ -10,6 +10,7 @@ ds.neModel(
   expData = NULL,
   se = "bootstrap",
   nBoot = 1000,
+  newobj = NULL,
   datasources = NULL
 )
 }
@@ -28,6 +29,9 @@ For glm.fit only the third option is supported.}
 The default type is based on the bootstrap.}
 
 \item{nBoot}{number of bootstrap replicates.}
+
+\item{newobj}{a character string that provides the name for the output object
+that is stored on the data servers. Default \code{neModel.out}.}
 
 \item{datasources}{a list of \code{\link{DSConnection-class}} 
 objects obtained after login. If the \code{datasources} argument is not specified
