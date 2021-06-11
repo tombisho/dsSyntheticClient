@@ -40,5 +40,3 @@ ds.neWeight <- function(object=NULL, newobj=NULL, datasources=NULL){
   DSI::datashield.assign(datasources, newobj, calltext)
 
 }  
-  
-  
