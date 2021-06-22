@@ -23,6 +23,8 @@
 #' @param sims a number of Monte Carlo draws for nonparametric bootstrap or 
 #' quasi-Bayesian approximation.
 #' @param seed a number of a seed random number generator. Default value is NULL.
+#' @param newobj a character string that provides the name for the output object
+#' that is stored on the data servers. Default \code{med.out}.
 #' @param datasources a list of \code{\link{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
 #' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
@@ -31,7 +33,7 @@
 #' @export
 #'
 ds.mediate <- function(model.m=NULL, model.y=NULL, treat = NULL, mediator = NULL, boot=FALSE,
-                       conf.level=0.95, robustSE=FALSE, sims=1000, seed=NULL, datasources=NULL){
+                       conf.level=0.95, robustSE=FALSE, sims=1000, seed=NULL, newobj=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
@@ -53,10 +55,13 @@ ds.mediate <- function(model.m=NULL, model.y=NULL, treat = NULL, mediator = NULL
 
   treat.name <- treat
   med.name <- mediator
+  
+  if(is.null(newobj)){
+    newobj <- 'med.out'
+  }
 
-  calltext <- call('mediateDS', model.m, model.y, treat.name, med.name, boot=boot, 
-                   conf.level=conf.level, robustSE=robustSE, sims=sims,
-                   seed=seed)
+  calltext <- call('mediateDS', model.m, model.y, treat.name, med.name, boot, 
+                   conf.level, robustSE, sims, seed, newobj)
   study.summary <- DSI::datashield.aggregate(datasources, calltext)
   
   return(study.summary)
