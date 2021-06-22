@@ -14,6 +14,7 @@ ds.mediate(
   robustSE = FALSE,
   sims = 1000,
   seed = NULL,
+  newobj = NULL,
   datasources = NULL
 )
 }
@@ -44,6 +45,9 @@ Default is 'FALSE'.}
 quasi-Bayesian approximation.}
 
 \item{seed}{a number of a seed random number generator. Default value is NULL.}
+
+\item{newobj}{a character string that provides the name for the output object
+that is stored on the data servers. Default \code{med.out}.}
 
 \item{datasources}{a list of \code{\link{DSConnection-class}} 
 objects obtained after login. If the \code{datasources} argument is not specified
