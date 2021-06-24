@@ -31,6 +31,7 @@
 #' @return a summary table of the object of class 'mediate'.
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @export
+#' @import DSI
 #'
 ds.mediate <- function(model.m=NULL, model.y=NULL, treat = NULL, mediator = NULL, boot=FALSE,
                        conf.level=0.95, robustSE=FALSE, sims=1000, seed=NULL, newobj=NULL, datasources=NULL){
