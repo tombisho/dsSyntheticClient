@@ -25,6 +25,7 @@
 #' @param sims a number of bootstrap samples used for the calculation of 
 #' confidence intervals.
 #' @param conf.level level to be used for confidence intervals.
+#' @param seed a number of a seed random number generator. Default value is NULL.
 #' @param datasources a list of \code{\link{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
 #' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
@@ -33,7 +34,7 @@
 #' @export
 #'
 ds.multimed <- function(outcome = NULL, med.main = NULL, med.alt = NULL, treat = NULL, covariates = NULL,
-                        data = NULL, sims = 1000, conf.level = 0.95, datasources = NULL){
+                        data = NULL, sims = 1000, conf.level = 0.95, seed = NULL, datasources = NULL){
 
   # look for DS connections
   if(is.null(datasources)){
@@ -63,7 +64,7 @@ ds.multimed <- function(outcome = NULL, med.main = NULL, med.alt = NULL, treat =
   covariates.transmit <- paste0(as.character(covariates), collapse=",")
   
   
-  calltext <- call('multimedDS', outcome.name, med.main.name, med.alt, treat.name, covariates.transmit, data, sims, conf.level)
+  calltext <- call('multimedDS', outcome.name, med.main.name, med.alt, treat.name, covariates.transmit, data, sims, seed, conf.level)
   study.summary <- DSI::datashield.aggregate(datasources, calltext)
   
   return(study.summary)
