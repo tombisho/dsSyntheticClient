@@ -13,6 +13,7 @@ ds.multimed(
   data = NULL,
   sims = 1000,
   conf.level = 0.95,
+  seed = NULL,
   datasources = NULL
 )
 }
@@ -38,6 +39,8 @@ above variables.}
 confidence intervals.}
 
 \item{conf.level}{level to be used for confidence intervals.}
+
+\item{seed}{a number of a seed random number generator. Default value is NULL.}
 
 \item{datasources}{a list of \code{\link{DSConnection-class}} 
 objects obtained after login. If the \code{datasources} argument is not specified
