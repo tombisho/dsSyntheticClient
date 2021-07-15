@@ -1,15 +1,14 @@
-Package: dsMediationClient
-Title: DataSHIELD Client Mediation Functions
+Package: dsSyntheticClient
+Title: DataSHIELD Client Synthetic data Functions
 Version: 0.0.1
-Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
-Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
-Description: DataSHIELD client functions for mediation.
+Author: Tom Bishop <trpb2@cam.ac.uk>
+Maintainer: Tom Bishop <trpb2@cam.ac.uk>
+Description: DataSHIELD client functions for synthetic data set generation.
 License: GPL-3
 Depends:
     R (>= 3.5.0),
     DSI (>= 1.2.0)
 Imports:
-    dsBaseClient,
     methods
 RoxygenNote: 7.1.1
 Encoding: UTF-8
