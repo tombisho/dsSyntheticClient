@@ -33,10 +33,15 @@ ds.syn2 <- function(data=NULL, ..., datasources=NULL){
   }
   
   arguments = list(...)
+  #challenge is that DataSHIELD won't let us transmit a list....
+  my_names = names(arguments)
+  my_vals = shQuote(as.character(arguments))
+  arg_list = paste(paste(my_names, my_vals, sep = "="), collapse=",")
   
   #calltext <- call('synDS2', data, arguments)
-  calltext <- paste0('synDS2("', data, '","',  arguments, '")')
-  study.summary <- DSI::datashield.aggregate(datasources, calltext)
+  calltext <- paste0('synDS2("', data, '",',  arg_list, ')')
+  print(calltext)
+  study.summary <- DSI::datashield.aggregate(datasources, calltext, async = TRUE)
   
   return(study.summary)
   
