@@ -38,9 +38,13 @@ ds.syn2 <- function(data=NULL, ..., datasources=NULL){
   my_vals = shQuote(as.character(arguments))
   arg_list = paste(paste(my_names, my_vals, sep = "="), collapse=",")
   
-  #calltext <- call('synDS2', data, arguments)
-  calltext <- paste0('synDS2("', data, '",',  arg_list, ')')
-  print(calltext)
+  if(arg_list=="="){
+    calltext <- paste0('synDS2("', data, '")')
+  }
+  else {
+    calltext <- paste0('synDS2("', data, '",',  arg_list, ')')
+  }
+
   study.summary <- DSI::datashield.aggregate(datasources, calltext, async = TRUE)
   
   return(study.summary)

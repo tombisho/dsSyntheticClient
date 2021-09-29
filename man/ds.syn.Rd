@@ -4,7 +4,15 @@
 \alias{ds.syn}
 \title{Synthetic dataset generation}
 \usage{
-ds.syn(data = NULL, method = "cart", m = NULL, seed = NULL, datasources = NULL)
+ds.syn(
+  data = NULL,
+  method = "cart",
+  m = 1,
+  k = NULL,
+  proper = FALSE,
+  seed = "sample",
+  datasources = NULL
+)
 }
 \arguments{
 \item{data}{a string that is the name of a dataframe containing the variables to be included in the synthetic dataset}
@@ -15,7 +23,11 @@ Order of variables is exactly the same as in data.}
 
 \item{m}{number of synthetic copies of the original (observed) data to be generated. The default is m = 1.}
 
-\item{seed}{an integer to be used as an argument for the set.seed(). If no integer is provided, a seed will be generated.}
+\item{k}{number of rows of data to be generated}
+
+\item{proper}{a logical value with default set to FALSE. If TRUE proper synthesis is conducted.}
+
+\item{seed}{an integer to be used as an argument for the set.seed(). If no integer is provided, the default "sample" will generate one and it will be stored. To prevent generating an integer set seed to NA.}
 
 \item{datasources}{a list of \code{\link{DSConnection-class}} 
 objects obtained after login. If the \code{datasources} argument is not specified
@@ -30,8 +42,7 @@ This function is similar to R function \code{syn} from the
 }
 \details{
 The function 'syn' is used to generate one or more synthetic datasets 
-from an observed dataset. There is no disclosure risk from allowing the seed to vary because repeated calls to generate a dataset
-should not reproduce the original data.
+from an observed dataset. See details in the \code{synthpop} package.
 }
 \author{
 Tom Bishop
