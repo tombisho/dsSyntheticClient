@@ -26,11 +26,9 @@ test_that("setup", {
 
 context("ds.syn::smk")
 test_that("simple synthetic test", {
-    res <- ds.syn2(data="D", method = "cart", m = 1, seed = 123)
+    res <- ds.syn(data="D", method = "cart", m = 1, seed = 123)
     expect_equal(object = length(res$sim1$syn$LAB_TSC), expected = 2163)
-    browser()
-    bonj = datashield.errors()
-    print(bonj)
+
 })
 
 #
