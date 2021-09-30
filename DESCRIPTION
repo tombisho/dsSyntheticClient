@@ -9,6 +9,8 @@ Depends:
     R (>= 3.5.0),
     DSI (>= 1.2.0)
 Imports:
-    methods
+    methods,
+    dsBaseClient,
+    simstudy
 RoxygenNote: 7.1.1
 Encoding: UTF-8
