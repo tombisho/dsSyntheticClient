@@ -48,14 +48,24 @@ ds.binary.helper <- function(dataframe = NULL, factor_variables, newobj = NULL, 
     my_levels = ds.levels(paste0(dataframe, "$",var), datasources)[[1]]$Levels
     my_length = length(my_levels)
     if (my_length > 2){ # no need to deal with variables that are already binary
+      # ds.asFactor (1) generates a matrix, which is not so easy to work with, and (2) creates the dummy variables as numeric (3) gives the dummy variables the same name every time
       factorInfo = ds.asFactor(input.var.name = paste0(dataframe, "$", var), fixed.dummy.vars = TRUE, newobj.name = "dummy", datasources = datasources)
       my_length = length(factorInfo$all.unique.levels) - 1
       new_levels = list(NULL,paste0(c(1:my_length),"_",var))
-      mat_name = paste0(var,"_mat")
+      mat_name = "temp_mat"
       ds.matrixDimnames(M1="dummy", dimnames = new_levels, newobj=mat_name, datasources = datasources)
-      my_names = c(my_names, mat_name)
+      #needs converting back into dataframeS
+      ds.dataFrame(x = mat_name, newobj = mat_name, datasources = datasources)
+      #convert to factors
+      cols = ds.colnames(x=mat_name, datasources = datasources)[[1]]
+      for(fac_name in cols){
+        ds.asFactor(input.var.name = paste0(mat_name, "$",fac_name), newobj.name = fac_name, datasources = datasources)
+      }
+      my_names = c(my_names, cols)
     }
     else {
+      #tidy up
+      ds.rm(x.names = c("dummy", my_names, mat_name), datasources)
       stop(paste0("This function is intended to convert multi-level factors into binaries, but the variable ", var, " is already binary. Please remove it from the input vector."), call.=FALSE)
     }
     
@@ -64,5 +74,5 @@ ds.binary.helper <- function(dataframe = NULL, factor_variables, newobj = NULL, 
   ds.dataFrame(x = my_names, newobj = newobj, datasources = datasources)
   
   #tidy up
-  ds.rm(x.names = c("dummy", my_names), datasources)
+  ds.rm(x.names = c("dummy", my_names, mat_name), datasources)
 }

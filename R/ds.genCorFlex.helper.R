@@ -148,16 +148,16 @@ ds.genCorFlex.helper <- function(dataframe = NULL, cont_variables, factor_variab
       distribution = "binary"
     }
     if(!exists("def")){
-      def <- defData(varname = Dnames[i], formula = means[i], variance = vars[i], dist = distribution)
+      def <- simstudy::defData(varname = Dnames[i], formula = means[i], variance = vars[i], dist = distribution)
     }
     else {
-      def <- defData(def, varname = Dnames[i], formula = means[i], variance = vars[i], dist = distribution)
+      def <- simstudy::defData(def, varname = Dnames[i], formula = means[i], variance = vars[i], dist = distribution)
     }
     
   }
   
   # generate synthetic data
-  dd <- genCorFlex(num_rows, def, rho = NULL, tau = NULL, corMatrix = corrs)
+  dd <- simstudy::genCorFlex(num_rows, def, rho = NULL, tau = NULL, corMatrix = corrs)
   
   
   # tidy up
