@@ -1,6 +1,6 @@
 # dsSyntheticClient
 
-DataSHIELD client side synthetic data generation functions.
+This is a DataSHIELD client side package for generating synthetic data.
 
 ## Quick start
 
@@ -25,3 +25,9 @@ Please see [this bookdown](https://tombisho.github.io/synthetic_bookdown/) for d
 ## Contact
 
 Soumya Banerjee and Tom R.P. Bishop
+
+
+## Citation
+
+Manuscript forthcoming
+
