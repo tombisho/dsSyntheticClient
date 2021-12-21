@@ -2,9 +2,16 @@
 
 This is a DataSHIELD client side package for generating synthetic data.
 
+Please also look at the server side package `dsSynthetic`
+
+https://github.com/tombisho/dsSynthetic
+
+
+
 ## Quick start
 
 Please see [this bookdown](https://tombisho.github.io/synthetic_bookdown/) for detailed guidance 
+
 
 ## Installation
 
