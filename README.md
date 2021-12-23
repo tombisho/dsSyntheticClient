@@ -67,7 +67,9 @@ Please see [this bookdown](https://tombisho.github.io/synthetic_bookdown/) for d
 
 ## Contact
 
-Soumya Banerjee and Tom R.P. Bishop
+Tom R.P. Bishop and Soumya Banerjee
+
+sb2333@cam.ac.uk
 
 
 ## Citation
