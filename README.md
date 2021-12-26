@@ -2,6 +2,8 @@
 
 `dsSyntheticClient` is a DataSHIELD client side package for generating synthetic data.
 
+DataSHIELD is a client-server framework for privacy preserving computation.
+
 Please also look at the server side package `dsSynthetic`
 
 https://github.com/tombisho/dsSynthetic
@@ -53,7 +55,7 @@ devtools::install_github('tombisho/dsSyntheticClient')
 ```
 
 
-* Follow the bookdown
+* Follow the bookdown which as executable code and synthetic data
 
 https://tombisho.github.io/synthetic_bookdown/
 
