@@ -1,6 +1,6 @@
 # dsSyntheticClient
 
-This is a DataSHIELD client side package for generating synthetic data.
+`dsSyntheticClient` is a DataSHIELD client side package for generating synthetic data.
 
 Please also look at the server side package `dsSynthetic`
 
