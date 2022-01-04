@@ -22,6 +22,11 @@ devtools::install_github('tombisho/dsSyntheticClient')
 
 Please see [this bookdown](https://tombisho.github.io/synthetic_bookdown/) for detailed guidance 
 
+This uses the Opal demo server which has all server side packages installed
+
+https://opal-sandbox.mrc-epid.cam.ac.uk/
+
+
 
 
 ## Installation
@@ -43,6 +48,12 @@ Please see [this bookdown](https://tombisho.github.io/synthetic_bookdown/) for d
 
 * Install dsBase and dsSynthetic on Opal server in the Virtual Machine (type tombisho/dsSynthetic and main in the textboxes) 
 
+See the link below on how to install a package in Opal
+
+https://opaldoc.obiba.org/en/latest/web-user-guide/administration/datashield.html#add-package
+
+
+
 * Install the package in R
 
 ```r
@@ -58,6 +69,11 @@ devtools::install_github('tombisho/dsSyntheticClient')
 * Follow the bookdown which as executable code and synthetic data
 
 https://tombisho.github.io/synthetic_bookdown/
+
+
+This uses the Opal demo server which has all server side packages installed
+
+https://opal-sandbox.mrc-epid.cam.ac.uk/
 
 
 
