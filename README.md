@@ -82,6 +82,11 @@ https://opal-sandbox.mrc-epid.cam.ac.uk/
 
 Please see [this bookdown](https://tombisho.github.io/synthetic_bookdown/) for detailed guidance 
 
+This uses the Opal demo server which has all server side packages installed
+
+https://opal-sandbox.mrc-epid.cam.ac.uk/
+
+
 
 ## Contact
 
