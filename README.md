@@ -86,7 +86,11 @@ This uses the Opal demo server which has all server side packages installed
 
 https://opal-sandbox.mrc-epid.cam.ac.uk/
 
+## Acknowledgements
 
+Thanks to the DataSHIELD team for providing the plaform on which these functions are based.
+
+Thanks to OBiBa and Epigeny for the Opal data warehouse which we use to run DataSHIELD
 
 ## Contact
 
