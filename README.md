@@ -101,5 +101,10 @@ sb2333@cam.ac.uk
 
 ## Citation
 
-Manuscript forthcoming
+If you like or use this work, please cite the following manuscript
+
+dsSynthetic: Synthetic data generation for the DataSHIELD federated analysis system
+
+https://osf.io/tkxqm/
+
 
