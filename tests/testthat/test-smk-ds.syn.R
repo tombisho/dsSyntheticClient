@@ -26,8 +26,9 @@ test_that("setup", {
 
 context("ds.syn::smk")
 test_that("simple synthetic test", {
-    res <- ds.syn(data="D", method = "cart", m = 1, seed = 123)
-    expect_equal(object = length(res$sim1$syn$LAB_TSC), expected = 2163)
+    res <- dsSyntheticClient::ds.syn(data="D", method = "cart", m = 1, seed = 123)
+    cat(res$Warning)
+    expect_equal(object = length(res$sim1$Data$syn$LAB_TSC), expected = 2163)
 
 })
 
