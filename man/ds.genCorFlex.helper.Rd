@@ -43,7 +43,8 @@ This is a function to generate synthetic data from private data on server. The f
    str_table_name = "DASIM.DASIM1"  # "DASIM.DASIM3"
    builder <- DSI::newDSLoginBuilder()
    builder$append(server="server1", url="http://192.168.56.100:8080",
-                    user="administrator", password="datashield_test&", table = str_table_name)#table = "TESTING.DATASET1")
+                    user="administrator", password="datashield_test&",
+                     table = str_table_name)#table = "TESTING.DATASET1")
    logindata <- builder$build()
 
    # Then perform login in each server
@@ -54,7 +55,8 @@ This is a function to generate synthetic data from private data on server. The f
 
    cont_vars = c("LAB_TSC", "LAB_TRIG", "LAB_HDL", "LAB_GLUC_FASTING", "PM_BMI_CONTINUOUS")
    factor_vars = c("DIS_CVA", "DIS_DIAB", "DIS_AMI")
-   synthetic_data <- generate_synthetic_data_simstudy(connections = connections, list_cont_variables = cont_vars, list_factor_variables = factor_vars)
+   synthetic_data <- generate_synthetic_data_simstudy(connections = connections,
+    list_cont_variables = cont_vars, list_factor_variables = factor_vars)
    datashield.logout(conns = connections)
 }
 

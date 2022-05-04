@@ -8,6 +8,7 @@
 #' @param method a single string or a vector of strings of length ncol(data)
 #' specifying the synthesising method to be used for each variable in the data.
 #' Order of variables is exactly the same as in data.
+#' Currently this is overwritten to CART for disclosure protection
 #' @param m number of synthetic copies of the original (observed) data to be generated. The default is m = 1.
 #' @param k number of rows of data to be generated
 #' @param proper a logical value with default set to FALSE. If TRUE proper synthesis is conducted.

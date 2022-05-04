@@ -19,7 +19,8 @@ ds.syn(
 
 \item{method}{a single string or a vector of strings of length ncol(data)
 specifying the synthesising method to be used for each variable in the data.
-Order of variables is exactly the same as in data.}
+Order of variables is exactly the same as in data.
+Currently this is overwritten to CART for disclosure protection}
 
 \item{m}{number of synthetic copies of the original (observed) data to be generated. The default is m = 1.}
 

@@ -19,7 +19,8 @@
 #'    str_table_name = "DASIM.DASIM1"  # "DASIM.DASIM3"
 #'    builder <- DSI::newDSLoginBuilder()
 #'    builder$append(server="server1", url="http://192.168.56.100:8080",
-#'                     user="administrator", password="datashield_test&", table = str_table_name)#table = "TESTING.DATASET1")
+#'                     user="administrator", password="datashield_test&",
+#'                      table = str_table_name)#table = "TESTING.DATASET1")
 #'    logindata <- builder$build()
 #'
 #'    # Then perform login in each server
@@ -30,7 +31,8 @@
 #'
 #'    cont_vars = c("LAB_TSC", "LAB_TRIG", "LAB_HDL", "LAB_GLUC_FASTING", "PM_BMI_CONTINUOUS")
 #'    factor_vars = c("DIS_CVA", "DIS_DIAB", "DIS_AMI")
-#'    synthetic_data <- generate_synthetic_data_simstudy(connections = connections, list_cont_variables = cont_vars, list_factor_variables = factor_vars)
+#'    synthetic_data <- generate_synthetic_data_simstudy(connections = connections,
+#'     list_cont_variables = cont_vars, list_factor_variables = factor_vars)
 
 #'    datashield.logout(conns = connections)
 #' }
@@ -70,7 +72,7 @@ ds.genCorFlex.helper <- function(dataframe = NULL, cont_variables, factor_variab
   if ( !is.null(factor_variables))
   {  
     for(var in factor_variables){
-      my_levels = ds.levels(paste0(dataframe, "$", var), datasources)[[1]]$Levels
+      my_levels = dsBaseClient::ds.levels(paste0(dataframe, "$", var), datasources)[[1]]$Levels
       my_length = length(my_levels)
       if (my_length > 2){
         stop(paste0("The variable ", var, " is not a binary factor. Please use the function XXXXX to decompose factors with multiple levels into binary factors."), call.=FALSE) 
@@ -90,12 +92,12 @@ ds.genCorFlex.helper <- function(dataframe = NULL, cont_variables, factor_variab
     for(var in factor_variables)
     {
       # convert factor to numeric
-      ds.asNumeric(paste0(dataframe,"$",var), newobj = paste0(var,"_num"), datasources = datasources)
-      if(!ds.exists(x="facD", datasources = datasources)[[1]]){
-        ds.dataFrame(x=c(paste0(var,"_num")), newobj = "facD", datasources = datasources)
+      dsBaseClient::ds.asNumeric(paste0(dataframe,"$",var), newobj = paste0(var,"_num"), datasources = datasources)
+      if(!dsBaseClient::ds.exists(x="facD", datasources = datasources)[[1]]){
+        dsBaseClient::ds.dataFrame(x=c(paste0(var,"_num")), newobj = "facD", datasources = datasources)
       }
       else {
-        ds.dataFrame(x=c("facD", paste0(var,"_num")), newobj = "facD", datasources = datasources)
+        dsBaseClient::ds.dataFrame(x=c("facD", paste0(var,"_num")), newobj = "facD", datasources = datasources)
       }
     }
     factor_variables = paste0(factor_variables,"_num")
@@ -106,26 +108,26 @@ ds.genCorFlex.helper <- function(dataframe = NULL, cont_variables, factor_variab
   if (!is.null(cont_variables) )
   {
     
-    ds.subset(x=dataframe, subset='numD', cols=cont_variables, datasources = datasources)
+    dsBaseClient::ds.subset(x=dataframe, subset='numD', cols=cont_variables, datasources = datasources)
   }  
   
   # combine dataframes
   if ( !is.null(factor_variables) & !is.null(cont_variables)){
-    ds.dataFrame(x=c("facD", "numD"), newobj = "final", datasources = datasources)
+    dsBaseClient::ds.dataFrame(x=c("facD", "numD"), newobj = "final", datasources = datasources)
   }
   else if (!is.null(factor_variables)) {
-    ds.dataFrame(x=c("facD"), newobj = "final", datasources = datasources)
+    dsBaseClient::ds.dataFrame(x=c("facD"), newobj = "final", datasources = datasources)
   }
   else if (!is.null(cont_variables)) {
-    ds.dataFrame(x=c("numD"), newobj = "final", datasources = datasources)
+    dsBaseClient::ds.dataFrame(x=c("numD"), newobj = "final", datasources = datasources)
   }
   
   
   # Now we use `ds.cor()` to generate a correlation matrix. Similarly, `ds.mean()` and `ds.var()` are used to obtain the means and variances:
   
-  Dnames = ds.colnames("final", datasources = datasources)[[1]]
+  Dnames = dsBaseClient::ds.colnames("final", datasources = datasources)[[1]]
   
-  corrs = ds.cor(x="final", datasources = datasources)[[1]]$`Correlation Matrix`
+  corrs = dsBaseClient::ds.cor(x="final", datasources = datasources)[[1]]$`Correlation Matrix`
   colnames(corrs) <- Dnames
   rownames(corrs) <- Dnames
   means = numeric()
@@ -133,8 +135,8 @@ ds.genCorFlex.helper <- function(dataframe = NULL, cont_variables, factor_variab
   
   for (var in Dnames)
   {
-    means = c(means, ds.mean(paste0("final$",var), datasources = datasources)$Mean.by.Study[1])
-    vars = c(vars, ds.var(paste0("final$",var), datasources = datasources)$Variance.by.Study[1])
+    means = c(means, dsBaseClient::ds.mean(paste0("final$",var), datasources = datasources)$Mean.by.Study[1])
+    vars = c(vars, dsBaseClient::ds.var(paste0("final$",var), datasources = datasources)$Variance.by.Study[1])
   }
   
   # Once we have the summary information, we use it to build a **simstudy** definition table. This is then used to generate the synthetic data.
@@ -162,7 +164,7 @@ ds.genCorFlex.helper <- function(dataframe = NULL, cont_variables, factor_variab
   
   # tidy up
   
-  ds.rm(x.names = c("final", "facD", "numD", factor_variables), datasources)
+  dsBaseClient::ds.rm(x.names = c("final", "facD", "numD", factor_variables), datasources)
   
   return(dd)
   
