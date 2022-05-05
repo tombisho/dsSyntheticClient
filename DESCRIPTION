@@ -1,6 +1,6 @@
 Package: dsSyntheticClient
 Title: DataSHIELD Client Synthetic data Functions
-Version: 0.0.1
+Version: 0.0.2
 Author: Tom Bishop <trpb2@cam.ac.uk>
 Maintainer: Tom Bishop <trpb2@cam.ac.uk>
 Description: DataSHIELD client functions for synthetic data set generation.
