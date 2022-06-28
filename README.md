@@ -103,6 +103,12 @@ sb2333@cam.ac.uk
 
 If you like or use this work, please cite the following manuscript
 
+Banerjee S, Bishop TRP. dsSynthetic: Synthetic data generation for the DataSHIELD federated analysis system. BMC Res. Notes. 2022;15 (1) :230
+
+https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-022-06111-2
+
+or
+
 dsSynthetic: Synthetic data generation for the DataSHIELD federated analysis system
 
 https://osf.io/tkxqm/
