@@ -7,8 +7,8 @@ authors:
 - family-names: "Bishop"
   given-names: "Tom"
   orcid: "https://orcid.org/0000-0000-0000-0000"
-title: "dsSyntheticClient"
+title: "dsSynthetic: Synthetic data generation for the DataSHIELD federated analysis system. BMC Res. Notes. 2022;15 (1) :230"
 version: 1.0.0
-doi: 10.5281/zenodo.1234
-date-released: 2021-11-19
-url: "https://github.com/neelsoumya/dsSyntheticClient"
+doi: https://doi.org/10.1186/s13104-022-06111-2
+date-released: 2022-6-20
+url: "https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-022-06111-2"
